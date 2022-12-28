@@ -37,14 +37,32 @@ def next_image():
   label.image = img
 
 
+def classify_image(classification):
+  global counter
+  global images
+  global size
+  global window
+  global label
+  
+
+  next_image()
+
 # Create a button to display the next image
 button = tk.Button(window, text='Next', command=next_image)
 button.pack()
 
+classes_btns = tk.Frame(window)
+button0 = tk.Button(classes_btns, text='Glasses', command=lambda :classify_image("glasses"))
+button0.grid(column=0, row=0)
+button1 = tk.Button(classes_btns, text='No Glasses', command=lambda :classify_image("no glasses"))
+button1.grid(column=1, row=0)
+button1 = tk.Button(classes_btns, text='Unclear', command=lambda :classify_image("unclear"))
+button1.grid(column=2, row=0)
 
 img = PhotoImage(file=os.path.join(directory, images[0]))
 label = tk.Label(window, image=img)
 label.pack()
+classes_btns.pack()
 
 # Run the Tkinter event loop
 window.mainloop()
