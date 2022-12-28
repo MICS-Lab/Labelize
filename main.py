@@ -9,55 +9,55 @@ csv_output = ''
 counter = 0
 images = os.listdir(directory)
 try:
-  with open('output.csv', newline='') as csvfile:
-      reader = csv.DictReader(csvfile)
-      for row in reader:
-          try:
-              images.remove(row['image path'])
-          except:
-              pass
+    with open('output.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            try:
+                images.remove(row['image path'])
+            except:
+                pass
 except FileNotFoundError:
-  pass
+    pass
 window = tk.Tk()
 
 # Function to display the next image
 def next_image():
-  global counter
-  global images
-  global window
-  global label
-  counter += 1
-  if counter >= len(images):
-    counter = 0
-  print(counter)
+    global counter
+    global images
+    global window
+    global label
+    counter += 1
+    if counter >= len(images):
+       counter = 0
+    print(counter)
 
-  img = PhotoImage(file=os.path.join(directory, images[counter]))
-  label.configure(image=img)
-  label.image = img# Function to display the next image
+    img = PhotoImage(file=os.path.join(directory, images[counter]))
+    label.configure(image=img)
+    label.image = img# Function to display the next image
 
 def prev_image():
-  global counter
-  global images
-  global window
-  global label
-  counter -= 1
-  if counter <0:
-    counter = len(images) - 1
-  print(counter)
+    global counter
+    global images
+    global window
+    global label
+    counter -= 1
+    if counter <0:
+        counter = len(images) - 1
+    print(counter)
 
-  img = PhotoImage(file=os.path.join(directory, images[counter]))
-  label.configure(image=img)
-  label.image = img
+    img = PhotoImage(file=os.path.join(directory, images[counter]))
+    label.configure(image=img)
+    label.image = img
 
 
 def classify_image(classification):
-  global counter
-  global images
-  global window
-  global label
-  global csv_output
-  csv_output += f"{images[counter]}, {classification}\n"
-  next_image()
+    global counter
+    global images
+    global window
+    global label
+    global csv_output
+    csv_output += f"{images[counter]}, {classification}\n"
+    next_image()
 
 top_btns = tk.Frame(window)
 button = tk.Button(top_btns, text='Next', command=next_image)
