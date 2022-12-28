@@ -73,6 +73,8 @@ button1 = tk.Button(classes_btns, text='No Glasses', command=lambda :classify_im
 button1.grid(column=1, row=0)
 button1 = tk.Button(classes_btns, text='Unclear', command=lambda :classify_image("unclear"))
 button1.grid(column=2, row=0)
+button1 = tk.Button(classes_btns, text='Bad Image', command=lambda :classify_image("bad image"))
+button1.grid(column=3, row=0)
 
 img = PhotoImage(file=os.path.join(directory, images[0]))
 label = tk.Label(window, image=img)
