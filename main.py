@@ -2,13 +2,12 @@ import os
 import tkinter as tk
 from tkinter import PhotoImage, filedialog
 
-# csv = 'image path, classification\n'
+
+directory = filedialog.askdirectory()
 csv = ''
 counter = 0
-
-window = tk.Tk()
-directory = filedialog.askdirectory()
 images = os.listdir(directory)
+window = tk.Tk()
 
 # Function to display the next image
 def next_image():
@@ -74,5 +73,16 @@ window.mainloop()
 
 
 # export csv
-with open('output.csv', 'a') as f:
-  f.write(csv)
+filename = 'output.csv'
+try:
+    f = open(filename, 'x')
+except FileExistsError:
+    # File already exists
+    # export csv
+    with open('output.csv', 'a') as f:
+        f.write(csv)
+else:
+    print(f"File {filename} created successfully.")
+    f.write("image path, classification\n")
+    f.write(csv)
+    f.close()
