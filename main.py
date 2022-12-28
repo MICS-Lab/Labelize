@@ -2,6 +2,8 @@ import os
 import tkinter as tk
 from tkinter import PhotoImage, filedialog
 
+csv = 'image path, classification\n'
+
 # Create a Tkinter window
 window = tk.Tk()
 
@@ -43,7 +45,9 @@ def classify_image(classification):
   global size
   global window
   global label
-  
+  global csv
+
+  csv += f"{images[counter]}, {classification}\n"
 
   next_image()
 
@@ -66,3 +70,4 @@ classes_btns.pack()
 
 # Run the Tkinter event loop
 window.mainloop()
+
