@@ -1,13 +1,23 @@
-import os
+import os, csv
 import tkinter as tk
 from tkinter import PhotoImage, filedialog
 
 
 # directory = filedialog.askdirectory()
 directory = 'small_faces'
-csv = ''
+csv_output = ''
 counter = 0
 images = os.listdir(directory)
+try:
+  with open('output.csv', newline='') as csvfile:
+      reader = csv.DictReader(csvfile)
+      for row in reader:
+          try:
+              images.remove(row['image path'])
+          except:
+              pass
+except FileNotFoundError:
+  pass
 window = tk.Tk()
 
 # Function to display the next image
@@ -45,8 +55,8 @@ def classify_image(classification):
   global images
   global window
   global label
-  global csv
-  csv += f"{images[counter]}, {classification}\n"
+  global csv_output
+  csv_output += f"{images[counter]}, {classification}\n"
   next_image()
 
 top_btns = tk.Frame(window)
@@ -81,9 +91,9 @@ except FileExistsError:
     # File already exists
     # export csv
     with open('output.csv', 'a') as f:
-        f.write(csv)
+        f.write(csv_output)
 else:
     print(f"File {filename} created successfully.")
     f.write("image path, classification\n")
-    f.write(csv)
+    f.write(csv_output)
     f.close()
