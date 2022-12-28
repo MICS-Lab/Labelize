@@ -71,3 +71,7 @@ classes_btns.pack()
 # Run the Tkinter event loop
 window.mainloop()
 
+
+# export csv
+with open('output.csv', 'w') as f:
+  f.write(csv)
