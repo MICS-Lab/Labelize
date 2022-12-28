@@ -3,7 +3,8 @@ import tkinter as tk
 from tkinter import PhotoImage, filedialog
 
 
-directory = filedialog.askdirectory()
+# directory = filedialog.askdirectory()
+directory = 'small_faces'
 csv = ''
 counter = 0
 images = os.listdir(directory)
