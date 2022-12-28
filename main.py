@@ -2,7 +2,8 @@ import os
 import tkinter as tk
 from tkinter import PhotoImage, filedialog
 
-csv = 'image path, classification\n'
+# csv = 'image path, classification\n'
+csv = ''
 
 # Create a Tkinter window
 window = tk.Tk()
@@ -73,5 +74,5 @@ window.mainloop()
 
 
 # export csv
-with open('output.csv', 'w') as f:
+with open('output.csv', 'a') as f:
   f.write(csv)
