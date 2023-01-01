@@ -56,7 +56,7 @@ def classify_image(classification):
     global window
     global label
     global csv_output
-    csv_output += f"{images[counter]}, {classification}\n"
+    csv_output += f"{images[counter]},{classification}\n"
     next_image()
 
 top_btns = tk.Frame(window)
@@ -104,6 +104,6 @@ except FileExistsError:
         f.write(csv_output)
 else:
     print(f"File {filename} created successfully.")
-    f.write("image path, classification\n")
+    f.write("image path,classification\n")
     f.write(csv_output)
     f.close()
