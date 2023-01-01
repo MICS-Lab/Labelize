@@ -81,6 +81,14 @@ label = tk.Label(window, image=img)
 label.pack()
 classes_btns.pack()
 
+# keyboard shortcuts
+window.bind_all('g', func=lambda e:classify_image("glasses"))
+window.bind_all('n', func=lambda e:classify_image("no glasses"))
+window.bind_all('u', func=lambda e:classify_image("unclear"))
+window.bind_all('b', func=lambda e:classify_image("bad image"))
+window.bind_all('<Left>', func=lambda e: prev_image())
+window.bind_all('<Right>', func=lambda e: next_image())
+
 # Run the Tkinter event loop
 window.mainloop()
 
