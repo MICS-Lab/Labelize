@@ -107,3 +107,10 @@ else:
     f.write("image path,classification\n")
     f.write(csv_output)
     f.close()
+
+# drop duplicates
+import pandas as pd
+
+df = pd.read_csv('output.csv')
+df_deduped = df.drop_duplicates(subset=['image path'], keep='last')
+df_deduped.to_csv('output.csv', index=False)
