@@ -76,7 +76,11 @@ for i,c in enumerate(params['classes']):
     bt = tk.Button(classes_btns, text=c, command=lambda :classify_image(c))
     bt.grid(column=i, row=0)
 
-img = PhotoImage(file=os.path.join(directory, images[0]))
+try:
+    img = PhotoImage(file=os.path.join(directory, images[0]))
+except:
+    print("No images in directory")
+    exit()
 label = tk.Label(window, image=img)
 label.pack()
 classes_btns.pack()
