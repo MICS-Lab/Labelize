@@ -1,3 +1,7 @@
-directory: #leave blanck to open a dialog
-# directory: dataset
-
+# directory: #leave blank to open a dialog
+directory: dataset
+classes:
+  - A
+  - B
+  - C
+  - D
