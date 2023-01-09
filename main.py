@@ -1,10 +1,15 @@
 import os, csv
 import tkinter as tk
 from tkinter import PhotoImage, filedialog
+import yaml
 
+with open('config.yaml', 'r') as f:
+    params = yaml.load(f, Loader=yaml.loader.SafeLoader) 
+if params['directory'] is None:
+    directory = filedialog.askdirectory()
+else:
+    directory = params['directory']
 
-# directory = filedialog.askdirectory()
-directory = 'small_faces'
 csv_output = ''
 counter = 0
 images = os.listdir(directory)
